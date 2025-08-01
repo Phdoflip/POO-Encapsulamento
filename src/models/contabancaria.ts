@@ -12,7 +12,7 @@ export class ContaBancaria {
   }
 
   sacar(valor: number) {
-    if (valor <= this.#saldo) {
+    if (valor > 0 && valor <= this.#saldo) {
       this.#saldo -= valor;
     }
   }
