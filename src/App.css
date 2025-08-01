@@ -1,42 +1,206 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+/* ===== RESET ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(270deg, #1a237e, #1976d2, #388e3c, #fbc02d);
+  background-size: 800% 800%;
+  animation: bgAnimation 20s ease infinite;
+  position: relative;
+}
+
+/* Animação de gradiente */
+@keyframes bgAnimation {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Overlay translúcido */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 0;
+}
+
+/* ===== CONTAINER ===== */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  position: relative;
+  z-index: 1;
+}
+
+/* ===== CARD ===== */
+.card {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  width: 400px;
   text-align: center;
 }
 
+/* ===== CABEÇALHO ===== */
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
 .logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+  width: 80px;
+  margin-bottom: 8px;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.header h1 {
+  font-size: 1.5rem;
+  color: #1a237e;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+/* ===== SALDO ===== */
+.saldo-container {
+  background: #e3f2fd;
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 20px;
 }
 
-.card {
-  padding: 2em;
+.saldo-container p {
+  color: #555;
+  font-size: 0.9rem;
 }
 
-.read-the-docs {
-  color: #888;
+.saldo {
+  font-size: 1.8rem;
+  color: #2e7d32;
+  font-weight: bold;
+}
+
+/* ===== MENSAGENS ===== */
+.mensagem {
+  padding: 8px;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+.mensagem.sucesso {
+  background-color: #c8e6c9;
+  color: #2e7d32;
+}
+
+.mensagem.erro {
+  background-color: #ffcdd2;
+  color: #c62828;
+}
+
+/* ===== OPERAÇÕES ===== */
+.operacoes {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.operacao {
+  display: flex;
+  gap: 8px;
+}
+
+.operacao input {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #bbb;
+  border-radius: 5px;
+  font-size: 0.95rem;
+}
+
+.btn {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  color: white;
+  font-weight: bold;
+}
+
+.btn.deposito {
+  background-color: #388e3c;
+}
+
+.btn.deposito:hover {
+  background-color: #2e7d32;
+}
+
+.btn.saque {
+  background-color: #d32f2f;
+}
+
+.btn.saque:hover {
+  background-color: #b71c1c;
+}
+
+/* ===== EXTRATO ===== */
+.extrato {
+  margin-top: 20px;
+  text-align: left;
+}
+
+.extrato h3 {
+  margin-bottom: 10px;
+  color: #1a237e;
+}
+
+.extrato-vazio {
+  color: #777;
+  font-size: 0.9rem;
+}
+
+.extrato ul {
+  list-style: none;
+  max-height: 150px;
+  overflow-y: auto;
+  padding-right: 5px;
+}
+
+.extrato li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fafafa;
+  padding: 8px;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  font-size: 0.9rem;
+}
+
+.deposito-item {
+  border-left: 4px solid #388e3c;
+}
+
+.saque-item {
+  border-left: 4px solid #d32f2f;
+}
+
+.extrato li small {
+  font-size: 0.7rem;
+  color: #666;
+  flex-basis: 100%;
+  text-align: right;
 }
